@@ -8,41 +8,46 @@
 
 ## 📌 Objective
 
-Clean and prepare a raw dataset for analysis by identifying and fixing:
+Clean and prepare a raw **Sales Dataset** for analysis by identifying and fixing common data-quality issues, including:
+
 - Missing values
 - Duplicate records
 - Incorrect data types
 - Inconsistent / dirty values
 - Outliers
+- Invalid or negative values
+
+The goal of this project is to transform the raw sales data into a clean and analysis-ready dataset.
 
 ---
 
 ## 📁 Repository Structure
 
-```
+
 data-cleaning-task/
 │
 ├── data/
-│   ├── raw_data.csv          ← Original untouched dataset
-│   └── cleaned_data.csv      ← Final cleaned output
+│   ├── raw_data.csv              ← Original untouched sales dataset
+│   └── cleaned_data.csv          ← Final cleaned sales dataset
 │
 ├── notebooks/
-│   └── data_cleaning.ipynb   ← Complete cleaning notebook (step-by-step)
+│   └── data_cleaning.ipynb       ← Complete cleaning notebook
 │
 ├── screenshots/
-│   ├── missing_values_heatmap.png    ← Before cleaning visualisation
-│   └── cleaning_summary_chart.png   ← After cleaning quality dashboard
+│   ├── missing_values_heatmap.png
+│   └── cleaning_summary_chart.png
 │
-└── README.md                 ← This file
-```
-
----
+└── README.md                     ← Project documentation
 
 ## 📊 Dataset Used
 
-- **Source:** [Titanic Dataset — Kaggle](https://www.kaggle.com/datasets/yasserh/titanic-dataset)
-- **Records:** 891 rows × 12 columns (raw)
-- **Domain:** Passenger survival data — ideal for demonstrating cleaning techniques
+- **Dataset:** Sales Dataset
+- **Records:** Sales transaction records
+- **Domain:** Sales / Business Analytics
+- **Format:** CSV
+- **Purpose:** Data cleaning, preprocessing, and preparation for analysis
+
+The dataset contains sales-related information and was used to demonstrate practical data-cleaning and preprocessing techniques.
 
 ---
 
@@ -50,13 +55,13 @@ data-cleaning-task/
 
 | # | Step | Issue Found | Action Taken |
 |---|------|-------------|--------------|
-| 1 | Missing Values | Age (19.9%), Cabin (77.1%), Embarked (0.2%) | Age → filled with median; Cabin → dropped (too many missing); Embarked → filled with mode |
-| 2 | Duplicate Records | Checked all rows for exact duplicates | Removed duplicates, kept first occurrence |
-| 3 | Data Type Fixes | PassengerId, Pclass stored incorrectly | Converted to correct types using pd.to_numeric() and pd.to_datetime() |
-| 4 | Inconsistent Values | Gender values mixed case (male/Male/MALE) | Standardised to Title Case using str.title() |
-| 5 | Outliers | Fare column had extreme outliers (£512) | Capped using IQR method (Winsorization) |
-| 6 | Negative Values | Checked Age, Fare for negatives | Converted any negatives to positive using abs() |
-| 7 | Derived Columns | No age groups or fare bands | Added Age_Group and Fare_Band columns for analysis |
+| 1 | Missing Values | Missing values identified across relevant columns | Missing values were handled using appropriate imputation or removal techniques |
+| 2 | Duplicate Records | Duplicate rows identified during data-quality checks | Duplicate records were removed while retaining valid records |
+| 3 | Data Type Fixes | Some columns had inappropriate data types | Converted columns to appropriate numeric, categorical, and date formats |
+| 4 | Inconsistent Values | Inconsistent formatting and categorical values | Standardised text and categorical values for consistency |
+| 5 | Outliers | Extreme values identified in numerical columns | Outliers were identified and handled using the IQR method |
+| 6 | Invalid Values | Invalid or negative values checked in numerical columns | Invalid values were identified and handled appropriately |
+| 7 | Derived Columns | Additional analytical fields required | Created derived columns where required for further analysis |
 
 ---
 
@@ -64,57 +69,33 @@ data-cleaning-task/
 
 | Metric | Before Cleaning | After Cleaning |
 |--------|----------------|----------------|
-| Total Rows | 891 | 889 |
-| Missing Values | 866 | 0 |
-| Duplicate Rows | 2 | 0 |
-| Columns | 12 | 15 |
-| Data Type Issues | 3 columns | 0 |
-| Outliers Capped | — | Yes (Fare column) |
+| Total Rows | Raw dataset | Cleaned dataset |
+| Missing Values | Identified | Handled |
+| Duplicate Rows | Identified | Removed |
+| Data Type Issues | Identified | Corrected |
+| Inconsistent Values | Identified | Standardised |
+| Outliers | Identified | Handled |
+| Data Quality | Raw / Unprocessed | Clean / Analysis-Ready |
 
 ---
 
 ## 🛠️ How to Run This Project
 
 ### 1. Clone the repository
-```bash
+
+
 git clone https://github.com/affanazinamdar91/data-cleaning-task.git
 cd data-cleaning-task
-```
-
-### 2. Install required libraries
-```bash
-pip install pandas numpy matplotlib seaborn jupyter
-```
-
-### 3. Open the notebook
-```bash
-jupyter notebook notebooks/data_cleaning.ipynb
-```
-
-### 4. Run all cells
-- Go to **Kernel → Restart & Run All**
-- Cleaned dataset will be saved to `data/cleaned_data.csv`
-
----
-
-## 💡 Key Libraries Used
-
-| Library | Purpose |
-|---------|---------|
-| `pandas` | Data loading, manipulation, cleaning |
-| `numpy` | Numerical operations, IQR calculation |
-| `matplotlib` | Charts and visualisations |
-| `seaborn` | Heatmaps, distribution plots |
-
----
 
 ## 📸 Screenshots
 
 ### Missing Values Heatmap (Before Cleaning)
-![Missing Values](screenshots/missing_values_heatmap.png)
+![Missing Values](<img width="1085" height="453" alt="05_missing_values_heatmap png" src="https://github.com/user-attachments/assets/10635e06-bbfe-495f-b4ae-a687fed1deae" />
+)
 
 ### Data Quality Dashboard (After Cleaning)
-![Cleaning Summary](screenshots/cleaning_summary_chart.png)
+![Cleaning Summary](<img width="711" height="897" alt="11_quality_dashboard_chart png" src="https://github.com/user-attachments/assets/a5f3cbc5-85b2-4517-bd7d-79b69a38db12" />
+)
 
 ---
 
