@@ -185,7 +185,36 @@ jupyter notebook eda_analysis_FIXED.ipynb
 | `seaborn` | Heatmaps, distribution plots, correlation |
 
 ---
+## ✅ Task 3 — Interactive Power BI Dashboard
 
+### Objective
+Build a professional interactive dashboard using Power BI
+to communicate main findings from the Sales Dataset clearly.
+
+### Dashboard Pages
+
+| Page | Title | Contents |
+|------|-------|----------|
+| Page 1 | Executive Overview | 5 KPI cards, Revenue by City, Product Line Donut, Monthly Trend, Territory Chart |
+| Page 2 | Sales Analysis | Top 10 Customers, Deal Size, Quarterly Revenue, Order Status |
+
+### Features Built
+- 5 interactive slicers (Territory, Product Line, Year, Status, Deal Size)
+- 8 DAX measures including Completion Rate %
+- 3 calculated columns
+- Cross-visual filtering
+- Professional orange theme
+
+### Tools Used
+Power BI Desktop · DAX · Power Query
+
+### Dashboard Screenshots
+
+#### Page 1 — Executive Overview
+![Page 1](Screenshots/task3_page1_executive_overview.png)
+
+#### Page 2 — Sales Analysis
+![Page 2](Screenshots/task3_page2_sales_analysis.png)
 ## 🔗 Connect
 
 - **LinkedIn:** [linkedin.com/in/affan-inamdar-bb32a3342](https://linkedin.com/in/affan-inamdar-bb32a3342)
