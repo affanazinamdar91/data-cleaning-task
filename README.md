@@ -1,226 +1,118 @@
-# 🧹 Data Cleaning & Exploratory Data Analysis
-**Data Science Internship — SWYNEX Technologies**
+📊 Sales Analytics Case Study
+End-to-End Data Analytics Project
 
-**Author:** Affan Inamdar
-**Domain:** Data Science / Data Analytics
-**Tools Used:** Python · Pandas · NumPy · Matplotlib · Seaborn · Jupyter Notebook
+Data Science Internship — SWYNEX Technologies Author: Affan Inamdar | Year: 2026
 
----
+Python Power BI Pandas
 
-## 📌 Tasks Overview
+📌 Project Overview
 
-| Task | Description | Status |
-|------|-------------|--------|
-| Task 1 | Data Cleaning & Preparation | ✅ Complete |
-| Task 2 | Exploratory Data Analysis (EDA) | ✅ Complete |
+This is a complete end-to-end data analytics case study performed on a Global Sales Dataset covering 2,823 transactions across 19 countries from 2003 to 2005. The project covers the full analytics pipeline:
 
----
+Raw Data → Data Cleaning → EDA → Interactive Dashboard → Business Insights
+✅ Tasks Completed
+Task	Description	Status	Key Output
+Task 1	Data Cleaning & Preparation	✅ Complete	cleaned_data.csv
+Task 2	Exploratory Data Analysis	✅ Complete	8 EDA Charts
+Task 3	Interactive Power BI Dashboard	✅ Complete	.pbix Dashboard
+Final	Complete Analytics Case Study	✅ Complete	CASE_STUDY.md
+🎯 Problem Statement
 
-## 📊 Dataset Used
+A global B2B sales company needed to understand:
 
-- **Dataset:** Sales Dataset (Real-world Sales Transactions)
-- **Raw Records:** 2,823 rows × 25 columns
-- **Domain:** Sales / Business Analytics
-- **Format:** CSV
-- **Columns Include:** Employee_ID, Employee_Name, Gender, Age, City, Region, Company, Department, Designation, Salary, Product, Category, Quantity, Unit_Price, Discount_Percent, Final_Sale_Amount, Order_Date, Payment_Method, Order_Status, Customer_Rating
-
----
-
-## 📁 Repository Structure
-
-```
+Which product lines and territories drive the most revenue?
+Who are the most valuable customers?
+What are the seasonal sales trends?
+How can order completion rates be improved?
+📊 Dataset
+Property	Value
+Records	2,823 rows × 25 columns
+Time Period	Jan 2003 — May 2005
+Countries	19
+Customers	92
+Products	109
+Total Revenue	$9,934,834
+💡 Key Business Insights
+#	Insight	Finding
+1	Geographic concentration	EMEA = 88% of revenue
+2	Product concentration	Classic Cars = 39% of revenue
+3	Customer concentration	Top 2 customers = 15.5% revenue
+4	Revenue growth	2004 peak year — +34% vs 2003
+5	Operations	92.7% order completion rate
+6	Deal segments	Medium deals = 61% of revenue
+7	Pricing impact	Strong correlation: price vs sales
+📁 Repository Structure
 data-cleaning-task/
 │
-├── raw_data.csv                    ← Original untouched sales dataset
-├── cleaned_data.csv                ← Final cleaned output (Task 1)
+├── raw_data.csv                      ← Original dataset
+├── cleaned_data.csv                  ← Cleaned output (Task 1)
+├── data_cleaning.ipynb               ← Task 1: Cleaning notebook
+├── eda_analysis_FIXED.ipynb          ← Task 2: EDA notebook
+├── Sales_Analytics_Dashboard.pbix    ← Task 3: Power BI file
+├── Sales_Analytics_Dashboard.pdf     ← Task 3: PDF export
+├── CASE_STUDY.md                     ← Full case study document
+├── README.md                         ← This file
 │
-├── data_cleaning.ipynb             ← Task 1: Complete cleaning notebook
-├── eda_analysis_FIXED.ipynb        ← Task 2: Complete EDA notebook
-│
-├── Screenshots/
-│   ├── 01_libraries_imported.png
-│   ├── 02_raw_data_head.png
-│   ├── 03_raw_data_info.png
-│   ├── 04_missing_values_report.png
-│   ├── 05_missing_values_heatmap.png
-│   ├── 06_missing_values_fixed.png
-│   ├── 07_duplicates_removed.png
-│   ├── 08_datatypes_fixed.png
-│   ├── 09_outliers_handled.png
-│   ├── 10_cleaning_summary_report.png
-│   ├── 11_quality_dashboard_chart.png
-│   ├── 12_cleaned_data_saved.png
-│   ├── eda_chart1_distribution.png
-│   ├── eda_chart2_revenue_by_city.png
-│   ├── eda_chart3_revenue_by_category.png
-│   ├── eda_chart4_sales_trend.png
-│   ├── eda_chart5_correlation.png
-│   ├── eda_chart6_outliers.png
-│   ├── eda_chart7_payment_status.png
-│   └── eda_chart8_summary_dashboard.png
-│
-└── README.md                       ← Project documentation
-```
+└── Screenshots/
+    ├── Task 1 screenshots (12 files)
+    ├── Task 2 EDA charts (8 files)
+    └── Task 3 dashboard (2 files)
+🧹 Task 1 — Data Cleaning
 
----
+Issues Fixed:
 
-## ✅ Task 1 — Data Cleaning & Preparation
+Issue	Action
+Missing values	Median (numeric) + Mode (categorical)
+Duplicates	Removed, kept first
+Wrong data types	pd.to_datetime() conversion
+Inconsistent text	str.strip() + str.title()
+Outliers	IQR capping (Winsorization)
+Derived columns	Added Year, Month, Quarter
 
-### Objective
-Clean and prepare the raw Sales Dataset for analysis by identifying and fixing all data quality issues.
+Screenshots:
 
-### Cleaning Steps Performed
+Show Image Show Image
 
-| # | Step | Issue Found | Action Taken |
-|---|------|-------------|--------------|
-| 1 | Missing Values | Missing values across multiple columns | Numeric → filled with Median; Categorical → filled with Mode |
-| 2 | Duplicate Records | Exact duplicate rows found | Removed duplicates, kept first occurrence |
-| 3 | Data Type Fixes | Date columns stored as object strings | Converted using `pd.to_datetime()` |
-| 4 | Inconsistent Values | Mixed case text (mumbai / Mumbai / MUMBAI) | Standardised using `str.strip()` + `str.title()` |
-| 5 | Outliers | Extreme values in numeric columns | Capped using IQR method (Winsorization) |
-| 6 | Invalid Values | Negative values in price/quantity columns | Converted to positive using `abs()` |
-| 7 | Derived Columns | No grouped or aggregated features | Added Age_Group, Salary_Band, Year, Month, Quarter |
+🔍 Task 2 — Exploratory Data Analysis
 
-### Before vs After
+7 insights extracted across 8 professional charts.
 
-| Metric | Before Cleaning | After Cleaning |
-|--------|----------------|----------------|
-| Total Rows | 2,823 | Cleaned ✅ |
-| Missing Values | Multiple columns | 0 ✅ |
-| Duplicate Rows | Present | 0 ✅ |
-| Data Type Issues | Multiple columns | All fixed ✅ |
-| Inconsistent Values | Present | Standardised ✅ |
-| Outliers | Present | Capped via IQR ✅ |
-| Data Quality | Raw / Unprocessed | Clean / Analysis-Ready ✅ |
+Show Image Show Image Show Image
 
-### Task 1 Screenshots
+📈 Task 3 — Power BI Dashboard
 
-#### Missing Values Heatmap (Before Cleaning)
-<img width="1085" height="453" alt="05_missing_values_heatmap" src="https://github.com/user-attachments/assets/10635e06-bbfe-495f-b4ae-a687fed1deae"/>
+2-page interactive dashboard with 5 slicers and 8 DAX measures.
 
-#### Data Quality Dashboard (After Cleaning)
-<img width="711" height="897" alt="11_quality_dashboard_chart" src="https://github.com/user-attachments/assets/a5f3cbc5-85b2-4517-bd7d-79b69a38db12"/>
+Show Image Show Image
 
----
-
-## ✅ Task 2 — Exploratory Data Analysis (EDA)
-
-### Objective
-Perform exploratory analysis on the cleaned Sales Dataset to calculate statistics, identify trends, patterns and anomalies, and extract at least 5 useful business insights.
-
-### 7 Key Insights Discovered
-
-| # | Insight | Finding |
-|---|---------|---------|
-| 1 | Revenue Distribution | Revenue is right-skewed — most orders are below average value; a few large orders drive the mean up |
-| 2 | Revenue by City/Region | Revenue is unevenly distributed — top cities generate significantly more than bottom cities |
-| 3 | Product/Category Performance | Top 5 categories contribute to majority of total revenue (Pareto Principle — 80/20 rule observed) |
-| 4 | Sales Trend Over Time | Clear monthly and quarterly revenue patterns — peak months and best quarter identified |
-| 5 | Correlation Analysis | Strong positive correlations found between key numeric variables — discount and quantity are top revenue drivers |
-| 6 | Outlier Detection | Outliers detected in revenue and quantity — represent premium transactions or potential data anomalies |
-| 7 | Payment & Demographics | Most popular payment method identified; order completion rate and status distribution analysed |
-
-### Charts Generated (8 Charts)
-
-| Chart | File | Description |
-|-------|------|-------------|
-| Chart 1 | eda_chart1_distribution.png | Revenue Histogram + Box Plot |
-| Chart 2 | eda_chart2_revenue_by_city.png | Revenue by City — Bar + Pie |
-| Chart 3 | eda_chart3_revenue_by_category.png | Product/Category Revenue Analysis |
-| Chart 4 | eda_chart4_sales_trend.png | Monthly & Quarterly Sales Trend |
-| Chart 5 | eda_chart5_correlation.png | Correlation Heatmap |
-| Chart 6 | eda_chart6_outliers.png | Outlier Detection Box Plots |
-| Chart 7 | eda_chart7_payment_status.png | Payment Method & Order Status |
-| Chart 8 | eda_chart8_summary_dashboard.png | **Final EDA Summary Dashboard ⭐** |
-
-### Task 2 Screenshots
-
-#### EDA Summary Dashboard
-![EDA Summary Dashboard](Screenshots/eda_chart8_summary_dashboard.png)
-
-#### Revenue by City
-![Revenue by City](Screenshots/eda_chart2_revenue_by_city.png)
-
-#### Correlation Heatmap
-![Correlation](Screenshots/eda_chart5_correlation.png)
-
----
-
-## 🛠️ How to Run This Project
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/affanazinamdar91/data-cleaning-task.git
-cd data-cleaning-task
-```
-
-### 2. Install required libraries
-```bash
+✅ Recommendations
+Expand into APAC & Japan — only 12% of current revenue
+Diversify product portfolio — reduce Classic Cars dependency
+Acquire new customers — reduce top-2 customer concentration risk
+Plan for Q4 peak — revenue spikes every Q4
+Investigate cancellations — 60 cancelled orders = lost revenue
+Focus on USA market — $3.59M potential to grow further
+Retain medium deal customers — 61% of total revenue
+🛠️ How to Run
+bash
+# Install dependencies
 pip install pandas numpy matplotlib seaborn jupyter
-```
 
-### 3. Run Task 1 — Data Cleaning
-```bash
+# Task 1 — Data Cleaning
 jupyter notebook data_cleaning.ipynb
-```
-→ Go to **Kernel → Restart & Run All**
-→ Output: `cleaned_data.csv`
 
-### 4. Run Task 2 — EDA
-```bash
+# Task 2 — EDA
 jupyter notebook eda_analysis_FIXED.ipynb
-```
-→ Go to **Kernel → Restart & Run All**
-→ Output: 8 chart PNG files saved to Screenshots folder
 
----
+# Task 3 — Open in Power BI Desktop
+# File: Sales_Analytics_Dashboard.pbix
+💻 Tech Stack
 
-## 💡 Key Libraries Used
+Python · Pandas · NumPy · Matplotlib · Seaborn · Jupyter · Power BI · DAX · Git
 
-| Library | Purpose |
-|---------|---------|
-| `pandas` | Data loading, manipulation, cleaning |
-| `numpy` | Numerical operations, IQR calculation |
-| `matplotlib` | Charts, dashboards, visualisations |
-| `seaborn` | Heatmaps, distribution plots, correlation |
+🔗 Connect
+LinkedIn: linkedin.com/in/affan-inamdar-bb32a3342
+GitHub: github.com/affanazinamdar91
+Email: afaninamdar91@gmail.com
 
----
-## ✅ Task 3 — Interactive Power BI Dashboard
-
-### Objective
-Build a professional interactive dashboard using Power BI
-to communicate main findings from the Sales Dataset clearly.
-
-### Dashboard Pages
-
-| Page | Title | Contents |
-|------|-------|----------|
-| Page 1 | Executive Overview | 5 KPI cards, Revenue by City, Product Line Donut, Monthly Trend, Territory Chart |
-| Page 2 | Sales Analysis | Top 10 Customers, Deal Size, Quarterly Revenue, Order Status |
-
-### Features Built
-- 5 interactive slicers (Territory, Product Line, Year, Status, Deal Size)
-- 8 DAX measures including Completion Rate %
-- 3 calculated columns
-- Cross-visual filtering
-- Professional orange theme
-
-### Tools Used
-Power BI Desktop · DAX · Power Query
-
-### Dashboard Screenshots
-
-#### Page 1 — Executive Overview
-![Page 1](Screenshots/task3_page1_executive_overview.png)
-
-#### Page 2 — Sales Analysis
-![Page 2](Screenshots/task3_page2_sales_analysis.png)
-## 🔗 Connect
-
-- **LinkedIn:** [linkedin.com/in/affan-inamdar-bb32a3342](https://linkedin.com/in/affan-inamdar-bb32a3342)
-- **GitHub:** [github.com/affanazinamdar91](https://github.com/affanazinamdar91)
-- **Email:** afaninamdar91@gmail.com
-
----
-
-*Submitted as Task 1 & Task 2 — Data Science Internship @ SWYNEX Technologies*
+Final Project — Data Science Internship @ SWYNEX Technologies | Affan Inamdar | 2026
